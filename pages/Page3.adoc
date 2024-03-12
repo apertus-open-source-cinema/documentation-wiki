@@ -1,6 +1,7 @@
 == PlantUML
 
 [plantuml, svg]
+....
 skinparam ranksep 20
 skinparam dpi 125
 skinparam packageTitleAlignment left
@@ -21,7 +22,7 @@ main_ts ==> (main.view)
 (main.view) --> (component)
 (main.view) ...> (singleton)
 (singleton) ---> (model)
-
+....
 
 == PlantUML (external file)
 
@@ -33,6 +34,7 @@ include::../data/test.puml[]
 == Kroki!
 
 [wavedrom]
+....
 { signal: [
   { name: "clk",         wave: "p.....|..." },
   { name: "Data",        wave: "x.345x|=.x", data: ["head", "body", "tail", "data"] },
@@ -40,3 +42,4 @@ include::../data/test.puml[]
   {},
   { name: "Acknowledge", wave: "1.....|01." }
 ]}
+....
