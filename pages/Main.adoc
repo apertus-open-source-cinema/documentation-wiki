@@ -1,0 +1,10 @@
+== apertus° Wiki
+
+// include:../themes/apertus-theme.yml[]
+role:
+  light-blue:
+      font-color: #0044FF
+      
+include::Page1.adoc[A page]
+
+include::Page2.adoc[Another page]

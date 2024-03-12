@@ -1,0 +1,6 @@
+#extends: default
+#base:
+#  font-color: #FF0000
+role:
+  light-blue:
+      font-color: #0044FF

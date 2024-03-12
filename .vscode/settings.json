@@ -1,0 +1,6 @@
+{
+  "asciidoc.preview.asciidoctorAttributes": {
+    "imagesdir": "${workspaceFolder}/images/"
+},
+"asciidoc.antora.enableAntoraSupport": true
+}

@@ -1,0 +1,14 @@
+== Chapter 2: Colored tables
+
+[stripes=even]
+|===
+|{set:cellbgcolor:#4169E1}a|b{set:cellbgcolor:#FF0000}|c{set:cellbgcolor:transparent}
+|d|e| [.red]#Te#[.yellow]##st##[.light-blue]#123#
+|===
+
+
+[format=dsv,separator=;]
+|===
+a;b;c
+d;e;f
+|===

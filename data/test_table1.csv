@@ -1,0 +1,5 @@
+pin, signal_name, rating
+1, VCC, 200mA
+2, Trigger, 1mA
+3, Data1, 1mA
+4, GND, 200mA

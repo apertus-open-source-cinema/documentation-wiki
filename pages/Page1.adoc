@@ -1,0 +1,20 @@
+== Chapter 1: Links, images, tables
+
+This is the body of the document.
+
+image:ABCP_LPCard_e.jpg[]
+
+Just a simple table:
+
+[format=dsv,separator=;]
+|===
+a;b;c
+d;e;f
+|===
+
+Another table, but data comes from external CSV file:
+
+[format="csv",options="header"]
+|===
+include::../data/test_table1.csv[]
+|===
