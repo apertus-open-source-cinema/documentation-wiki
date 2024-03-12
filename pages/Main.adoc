@@ -9,4 +9,4 @@ include::Page1.adoc[A page]
 
 include::Page2.adoc[Another page]
 
-include::Page2.adoc[PlantUML]
+include::Page3.adoc[PlantUML]
