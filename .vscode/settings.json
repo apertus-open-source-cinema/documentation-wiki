@@ -2,5 +2,6 @@
   "asciidoc.preview.asciidoctorAttributes": {
     "imagesdir": "${workspaceFolder}/images/"
 },
-"asciidoc.antora.enableAntoraSupport": true
+"asciidoc.antora.enableAntoraSupport": true,
+"asciidoc.extensions.enableKroki": true
 }
