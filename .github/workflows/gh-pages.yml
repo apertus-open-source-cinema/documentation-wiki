@@ -18,10 +18,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: setup
         run: chmod +x dtcw
-      - name: generateSite
+      - name: generateHTML
         run: ./dtcw generateHTML
-      - name: copyToPublic
+      - name: generatePDF
+        run: ./dtcw generatePDF
+      - name: copyHTMLToPublic
         run: cp -r ./build/html5/ ./public
+      - name: copyPDFToPublic
+        run: cp ./build/pdf/*.pdf ./public
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         #        if: ${{ github.ref == 'refs/heads/main' }}
