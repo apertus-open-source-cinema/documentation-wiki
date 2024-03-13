@@ -4,3 +4,5 @@
 role:
   light-blue:
       font-color: #0044FF
+heading:
+  font-color: #FA8756
