@@ -1,5 +1,5 @@
 [.text-right]
-{repo-url}/blob/main/pages/{docname}{docfilesuffix}[Edit]
+{repo-url}/blob/main/pages/Page1.adoc[Edit]
 
 == Chapter 1: Links, images, tables
 

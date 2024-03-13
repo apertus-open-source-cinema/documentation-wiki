@@ -1,7 +1,10 @@
+:repo-url: https://github.com/apertus-open-source-cinema/documentation-wiki
+
+[.text-right]
+{repo-url}/blob/main/pages/{docname}{docfilesuffix}[Edit]
+
 == apertus° Wiki
 
-:repo-url: https://github.com/apertus-open-source-cinema/documentation-wiki
-      
 include::Page1.adoc[A page]
 
 include::Page2.adoc[Another page]

@@ -1,3 +1,6 @@
+[.text-right,.small]
+{repo-url}/blob/main/pages/Page2.adoc[Edit]
+
 == Chapter 2: Colored tables
 
 [stripes=even]
