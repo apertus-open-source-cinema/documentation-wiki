@@ -1,9 +1,6 @@
 == apertus° Wiki
 
-// include:../themes/apertus-theme.yml[]
-role:
-  light-blue:
-      font-color: #0044FF
+:repo-url: https://github.com/apertus-open-source-cinema/documentation-wiki
       
 include::Page1.adoc[A page]
 

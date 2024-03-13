@@ -1,8 +1,5 @@
-{docdir}
-
-{docfile}
-
-{docname}
+[.text-right]
+{repo-url}/blob/main/pages/{docname}{docfilesuffix}[Edit]
 
 == Chapter 1: Links, images, tables
 
