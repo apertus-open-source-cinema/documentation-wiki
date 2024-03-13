@@ -1,3 +1,9 @@
+{docdir}
+
+{docfile}
+
+{docname}
+
 == Chapter 1: Links, images, tables
 
 This is the body of the document.
