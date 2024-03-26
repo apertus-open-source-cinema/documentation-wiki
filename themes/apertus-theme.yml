@@ -1,8 +1,21 @@
-#extends: default
-#base:
-#  font-color: #FF0000
+extends: default
+font:
+  catalog:
+    merge: false 
+    Roboto:
+      normal: Roboto-Regular.ttf
+      bold: Roboto-Bold.ttf
+base:
+  font-family: Roboto
+  font-size: 12
+  line-height-length: 17
+  line-height: $base-line-height-length / $base-font-size
 role:
   light-blue:
       font-color: #0044FF
 heading:
   font-color: #FA8756
+page:
+  size: A4
+  layout: portrait
+  margin: [0.75in, 1in, 0.75in, 1in]
