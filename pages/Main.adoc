@@ -1,4 +1,7 @@
 :repo-url: https://github.com/apertus-open-source-cinema/documentation-wiki
+:pdf-themesdir: ../themes/
+:pdf-fontsdir: ../themes/
+:pdf-theme: apertus
 
 [.text-right]
 {repo-url}/blob/main/pages/{docname}{docfilesuffix}[Edit]

@@ -12,7 +12,10 @@ set -o pipefail
 
 # See https://github.com/docToolchain/docToolchain/releases for available versions.
 # Set DTC_VERSION to "latest" to get the latest, yet unreleased version.
-: "${DTC_VERSION:=3.2.2}"
+: "${DTC_VERSION:=3.3.1}"
+
+# if not set, public docker hub is used
+: "${DTC_DOCKER_PREFIX:=}"
 
 # The 'generateSite' and 'copyThemes' tasks support DTC_SITETHEME, an URL of a theme.
 # export DTC_SITETHEME=https://....zip
@@ -219,6 +222,11 @@ get_dtc_installations() {
 
     if [ -x "${DTC_HOME}/bin/doctoolchain" ]; then
         installations+=" local"
+    else
+        # maybe it is just available in the path
+        if command -v doctoolchain >/dev/null 2>&1; then
+            installations+=" local"
+        fi
     fi
 
     if [[ "${envs}" =~ sdk ]] && sdk_home_doctoolchain "${version}" &> /dev/null ; then
@@ -624,7 +632,7 @@ build_command() {
         docker_args="run --rm -i --platform linux/amd64 -u $(id -u):$(id -g) --name ${container_name} \
             -e DTC_HEADLESS=true -e DTC_SITETHEME -e DTC_PROJECT_BRANCH=${DTC_PROJECT_BRANCH} \
             ${docker_extra_arguments} ${env_file_option} \
-            --entrypoint /bin/bash -v '${pwd}:/project' ${docker_image}:v${version}"
+            --entrypoint /bin/bash -v '${pwd}:/project' ${DTC_DOCKER_PREFIX}${docker_image}:v${version}"
 
         cmd="docker ${docker_args} -c \"doctoolchain . ${*} ${DTC_OPTS} && exit\""
     else
@@ -634,7 +642,12 @@ build_command() {
             DTC_OPTS="${DTC_OPTS} '-Dgradle.user.home=${DTC_ROOT}/.gradle'"
         fi
         if [ "${env}" = local ]; then
-            cmd="${DTC_HOME}/bin/doctoolchain . ${*} ${DTC_OPTS}"
+            # is doctoolchain available on the path?
+            if command -v doctoolchain >/dev/null 2>&1; then
+                cmd="doctoolchain . ${*} ${DTC_OPTS}"
+            else
+                cmd="${DTC_HOME}/bin/doctoolchain . ${*} ${DTC_OPTS}"
+            fi
         else
             cmd="$(sdk_home_doctoolchain "${version}")/bin/doctoolchain . ${*} ${DTC_OPTS}"
         fi

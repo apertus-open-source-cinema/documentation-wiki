@@ -1,15 +1,18 @@
-extends: default
-font:
-  catalog:
-    merge: false 
-    Roboto:
-      normal: Roboto-Regular.ttf
-      bold: Roboto-Bold.ttf
+extends: base
 base:
   font-family: Roboto
   font-size: 12
   line-height-length: 17
   line-height: $base-line-height-length / $base-font-size
+font:
+  catalog:
+    merge: true
+    Roboto:
+      normal: Roboto-Regular.ttf
+      italic: Roboto-Regular.ttf
+      bold: Roboto-Bold.ttf
+      bold_italic: Roboto-Regular.ttf
+  # fallbacks: [Roboto]
 role:
   light-blue:
       font-color: #0044FF
