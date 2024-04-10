@@ -1,6 +1,7 @@
 [.text-right]
 {repo-url}/blob/main/pages/Page1.adoc[Edit]
 
+
 == Chapter 1: Links, images, tables
 
 This is the body of the document.
@@ -54,6 +55,26 @@ Type `OK` to accept.
 That *_really_* has to go.
 
 Can't pick one? Let's use them `*_all_*`.
+
+:source-highlighter: coderay
+
+Check out this example C source code:
+[source, c]
+----
+#include <stdio.h>
+int main() {
+   // printf() displays the string inside quotation
+   printf("Hello, World!");
+   return 0;
+}
+----
+
+When connecting to the camera via Wifi the hostname is automatically set to `axiom.camera`.
+
+This means you can use `axiom.camera` instead of the IP in your browser to access the WebUi or through ssh:
+----
+ssh operator@axiom.camera
+----
 
 == Videos
 
