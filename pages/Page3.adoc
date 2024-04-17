@@ -1,6 +1,6 @@
 == PlantUML
 
-[plantuml, svg]
+[plantuml]
 ....
 skinparam ranksep 20
 skinparam dpi 125
@@ -26,20 +26,85 @@ main_ts ==> (main.view)
 
 == PlantUML (external file)
 
-[plantuml, "syntax-example2", svg]
+[plantuml, "syntax-example2"]
 ....
 include::../data/test.puml[]
 ....
 
 == Kroki!
 
-[wavedrom]
+[wavedrom, test_waveform, svg, opts=interactive]
 ....
 { signal: [
+  { name: "clk2",        wave: "p.....|..." },
   { name: "clk",         wave: "p.....|..." },
   { name: "Data",        wave: "x.345x|=.x", data: ["head", "body", "tail", "data"] },
   { name: "Request",     wave: "0.1..0|1.0" },
   {},
   { name: "Acknowledge", wave: "1.....|01." }
 ]}
+....
+
+
+[graphviz, inline]
+....
+digraph foo {
+  node [style=rounded]
+  node1 [shape=box]
+  node2 [fillcolor=yellow, style="rounded,filled", shape=diamond]
+  node3 [shape=record, label="{ a | b | c }"]
+
+  node1 -> node2 -> node3
+}
+....
+
+
+[bytefield]
+....
+(defattrs :bg-green {:fill "#a0ffa0"})
+(defattrs :bg-yellow {:fill "#ffffa0"})
+(defattrs :bg-pink {:fill "#ffb0a0"})
+(defattrs :bg-cyan {:fill "#a0fafa"})
+(defattrs :bg-purple {:fill "#e4b5f7"})
+
+(defn draw-group-label-header
+  "Creates a small borderless box used to draw the textual label headers
+  used below the byte labels for remotedb message diagrams.
+  Arguments are the number of columns to span and the text of the
+  label."
+  [span label]
+  (draw-box (text label [:math {:font-size 12}]) {:span    span
+                                                  :borders #{}
+                                                  :height  14}))
+....
+
+
+[wireviz]
+....
+connectors:
+  X1:
+    type: D-Sub
+    subtype: female
+    pinlabels: [DCD, RX, TX, DTR, GND, DSR, RTS, CTS, RI]
+  X2:
+    type: Molex KK 254
+    subtype: female
+    pinlabels: [GND, RX, TX]
+
+cables:
+  W1:
+    gauge: "0.25 mm2"
+    length: 0.2
+    color_code: DIN
+    wirecount: 3
+    shield: true
+
+connections:
+  -
+    - X1: [5,2,3]
+    - W1: [1,2,3]
+    - X2: [1,3,2]
+  -
+    - X1: 5
+    - W1: s
 ....

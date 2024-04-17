@@ -56,9 +56,8 @@ That *_really_* has to go.
 
 Can't pick one? Let's use them `*_all_*`.
 
-:source-highlighter: coderay
-
 Check out this example C source code:
+
 [source, c]
 ----
 #include <stdio.h>
@@ -72,6 +71,7 @@ int main() {
 When connecting to the camera via Wifi the hostname is automatically set to `axiom.camera`.
 
 This means you can use `axiom.camera` instead of the IP in your browser to access the WebUi or through ssh:
+[source, shell]
 ----
 ssh operator@axiom.camera
 ----

@@ -9,26 +9,35 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     env:
       DTC_HEADLES: true
+    container:
+      image: uwebarthel/asciidoctor
+      volumes:
+        - ${{ github.workspace }}:/documents
+    defaults:
+      run:
+        working-directory: /documents
     steps:
       - uses: actions/checkout@v3
-      - name: setup
-        run: chmod +x dtcw
-      - name: generateHTML
-        run: ./dtcw generateHTML
-      - name: generatePDF
-        run: ./dtcw generatePDF
+      - name: Create build dirs
+        run: mkdir -p build/html build/pdf
+      - name: Build HTML
+        run: |
+          cp -r pages/images build/html/images
+          asciidoctor -r asciidoctor-kroki -D build --backend=html5 -o html/index.html pages/Main.adoc
+      - name: Build PDF
+        run: "asciidoctor-pdf -r asciidoctor-kroki -D build --backend=pdf -o pdf/apertus_docs.pdf pages/Main.adoc"
       - name: copyHTMLToPublic
-        run: cp -r ./build/html5/ ./public
+        run: cp -r ./build/html/index.html ./public
       - name: copyPDFToPublic
-        run: cp ./build/pdf/*.pdf ./public
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        #        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+        run: cp ./build/pdf/apertus_docs.pdf ./public
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   #        if: ${{ github.ref == 'refs/heads/main' }}
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./public

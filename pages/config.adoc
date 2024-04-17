@@ -1,0 +1,8 @@
+:repo-url: https://github.com/apertus-open-source-cinema/documentation-wiki
+:pdf-themesdir: ./themes/
+:pdf-fontsdir: ./themes/
+:pdf-theme: apertus
+:source-highlighter: coderay
+:kroki-fetch-diagram: true
+:imagesdir: ./images
+:imagesoutdir: pages/images
