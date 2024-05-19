@@ -1,0 +1,47 @@
+== AXIOM Remote
+
+=== Components
+
+- LCD display (ILI9341)
+- Potentiometer (12 detent and click)
+- 16 menu buttons, Record and Photo buttons
+- 2 LEDs
+- USB-C (USB2.0 wiring) for power supply and camera control
+
+
+=== Display wiring
+[wireviz]
+....
+connectors:
+  ILI9341:
+    type: LCD
+    pincount: 50
+    pinlabels: [Reset, D0, D1, D2, D3, D4, D5, D6, D7, WRX, D/CX,GND]
+    pins: [10, 25,26,27,28,29,30,31,32, 36, 37, 50]
+  PicoPI:
+    type: MCU
+    #pincount: 40
+    #pins: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, #27, 28, 29, 300, 31,32,33,34,35,36,37,38,39,40]
+    #pinlabels: [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10 ,P11, P12, P13,P14,P15,P16,P17]
+    pinlabels: [GPIO0, GPIO1, GND, GPIO2, GPIO3, GPIO4, GPIO5, GND, GPIO6, GPIO7, GPIO8, GPIO9, GND, GPIO10, GPIO11, GPIO12, GPIO13, GND, GPIO14, GPIO15, GPIO16, GPIO17, GND, GPIO18, GPIO19, GPIO20, GPIO21, GND, GPIO22, RUN, GPIO26, GPIO27, GND, GPIO28, ADC_VREF, 3V3, 3V3_EN, GND, VSYS, VBUS]
+
+cables:
+  LCDControl:
+    wirecount: 4
+  LCDData:
+    wirecount: 8
+    #category: bundle
+
+connections:
+  -
+    - PicoPI: [9-12, 14-17]
+    - LCDData: [1-8]
+    - ILI9341: [25-32]
+  -
+    - PicoPI: [3, 1, 2, 4]
+    - LCDControl: [1-4]
+    - ILI9341: [GND, Reset, WRX, D/CX]
+....
+
+// References:
+// https://community-storage.element14.com/communityserver-blogs-components-weblogfiles/00/00/00/00/86/Pico_Parallel_8x2LCD.jpg?sv=2016-05-31&sr=b&sig=kO0mZEEgY0mJz5kUp0NlcvEVPn5RDIUD1q63J5NFzpQ%3D&se=2024-05-25T23%3A59%3A59Z&sp=r&_=s06Ufwz4mZVs04qci1GHkw==

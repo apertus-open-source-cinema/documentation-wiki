@@ -10,3 +10,5 @@ include::Page1.adoc[A page]
 include::Page2.adoc[Another page]
 
 include::Page3.adoc[PlantUML]
+
+include::AXIOM_Remote.adoc[AXIOM Remote]
